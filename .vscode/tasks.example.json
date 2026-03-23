@@ -1,0 +1,46 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "esbuild",
+      "group": "build",
+      "isBackground": false,
+      "problemMatcher": "$esbuild-watch"
+    },
+    {
+      "type": "npm",
+      "script": "esbuild-watch",
+      "group": "build",
+      "isBackground": true,
+      "problemMatcher": "$esbuild-watch",
+      "presentation": {
+        "reveal": "never"
+      }
+    },
+    {
+      "label": "Kukicha: Check Syntax",
+      "type": "shell",
+      "command": "kukicha",
+      "args": [
+        "check",
+        "${file}"
+      ],
+      "problemMatcher": {
+        "owner": "kukicha",
+        "fileLocation": [
+          "relative",
+          "${workspaceFolder}"
+        ],
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(error|warning):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        }
+      }
+    }
+  ]
+}
