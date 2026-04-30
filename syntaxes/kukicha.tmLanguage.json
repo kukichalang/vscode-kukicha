@@ -27,7 +27,9 @@
         { "include": "#method" },
         { "include": "#type" },
         { "include": "#interface" },
-        { "include": "#var" }
+        { "include": "#var" },
+        { "include": "#const" },
+        { "include": "#skill" }
       ]
     },
     "petiole": {
@@ -123,6 +125,20 @@
         "6": { "name": "meta.assignment.rhs.kukicha" }
       }
     },
+    "const": {
+      "match": "^\\s*(const|constant)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+      "captures": {
+        "1": { "name": "keyword.control.const.kukicha" },
+        "2": { "name": "entity.name.constant.kukicha" }
+      }
+    },
+    "skill": {
+      "match": "^\\s*(skill)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+      "captures": {
+        "1": { "name": "keyword.control.skill.kukicha" },
+        "2": { "name": "entity.name.type.skill.kukicha" }
+      }
+    },
     "statements": {
       "patterns": [
         { "include": "#if" },
@@ -135,7 +151,8 @@
         { "include": "#send" },
         { "include": "#short-var" },
         { "include": "#assignment" },
-        { "include": "#onerr" }
+        { "include": "#onerr" },
+        { "include": "#fallback" }
       ]
     },
     "if": {
@@ -297,6 +314,10 @@
         }
       ]
     },
+    "fallback": {
+      "match": "\\b(fallback)\\b",
+      "name": "keyword.control.fallback.kukicha"
+    },
     "block": {
       "patterns": [
         { "include": "#statements" },
@@ -341,6 +362,25 @@
     "strings": {
       "patterns": [
         {
+          "begin": "\"\"\"",
+          "end": "\"\"\"",
+          "name": "string.quoted.triple.kukicha",
+          "patterns": [
+            {
+              "match": "\\\\.",
+              "name": "constant.character.escape.kukicha"
+            },
+            {
+              "begin": "\\{",
+              "end": "\\}",
+              "name": "meta.interpolation.kukicha",
+              "patterns": [
+                { "include": "#expressions" }
+              ]
+            }
+          ]
+        },
+        {
           "begin": "\"",
           "end": "\"",
           "name": "string.quoted.double.kukicha",
@@ -369,7 +409,18 @@
           "end": "'",
           "name": "string.quoted.single.kukicha",
           "patterns": [
-            { "match": "\\\\.", "name": "constant.character.escape.kukicha" }
+            {
+              "match": "\\\\.",
+              "name": "constant.character.escape.kukicha"
+            },
+            {
+              "begin": "\\{",
+              "end": "\\}",
+              "name": "meta.interpolation.kukicha",
+              "patterns": [
+                { "include": "#expressions" }
+              ]
+            }
           ]
         }
       ]
@@ -391,13 +442,13 @@
       "name": "constant.language.boolean.kukicha"
     },
     "special-literals": {
-      "match": "\\b(empty|nil)\\b",
+      "match": "\\b(empty|nil|iota)\\b",
       "name": "constant.language.null.kukicha"
     },
     "operators": {
       "patterns": [
         {
-          "match": "\\b(and|or|not|equals)\\b",
+          "match": "\\b(and|or|not|equals|is|isnt)\\b",
           "name": "keyword.operator.word.kukicha"
         },
         {
