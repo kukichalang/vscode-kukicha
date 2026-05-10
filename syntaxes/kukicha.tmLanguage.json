@@ -207,11 +207,11 @@
       "end": "^(?![ \\t])",
       "patterns": [
         {
-          "begin": "^\\s*(when|otherwise|default)\\b",
+          "begin": "^\\s*(when|default)\\b",
           "beginCaptures": {
             "1": { "name": "keyword.control.case.kukicha" }
           },
-          "end": "(?=^\\s*(when|otherwise|default)\\b)|^(?![ \\t])",
+          "end": "(?=^\\s*(when|default)\\b)|^(?![ \\t])",
           "patterns": [
             { "include": "#block" }
           ]
@@ -226,11 +226,11 @@
       "end": "^(?![ \\t])",
       "patterns": [
         {
-          "begin": "^\\s*(when|otherwise|default)\\b",
+          "begin": "^\\s*(when|default)\\b",
           "beginCaptures": {
             "1": { "name": "keyword.control.case.kukicha" }
           },
-          "end": "(?=^\\s*(when|otherwise|default)\\b)|^(?![ \\t])",
+          "end": "(?=^\\s*(when|default)\\b)|^(?![ \\t])",
           "patterns": [
             { "include": "#block" }
           ]
