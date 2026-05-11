@@ -13,7 +13,7 @@
   ],
   "folding": {
     "markers": {
-      "start": "^\\s*(func|function|type|interface|if|for|switch|select|go)\\b",
+      "start": "^\\s*(func|function|type|interface|enum|if|for|switch|select|go)\\b",
       "end": "^(?!\\s)"
     }
   },

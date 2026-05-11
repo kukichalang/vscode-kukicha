@@ -27,6 +27,7 @@
         { "include": "#method" },
         { "include": "#type" },
         { "include": "#interface" },
+        { "include": "#enum" },
         { "include": "#var" },
         { "include": "#const" },
         { "include": "#skill" }
@@ -77,22 +78,64 @@
       ]
     },
     "type": {
-      "begin": "^\\s*(type)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*$",
-      "beginCaptures": {
-        "1": { "name": "keyword.control.type.kukicha" },
-        "2": { "name": "entity.name.type.kukicha" }
-      },
-      "end": "^(?![ \\t])|^(?=\\s*\\})",
       "patterns": [
         {
-          "match": "^\\s*([a-zA-Z_][a-zA-Z0-9_]*)\\s+([a-zA-Z_][a-zA-Z0-9_\\s]+?)(?:\\s+(as)\\s+\"([^\"]+)\"?)?\\s*$",
+          "match": "^\\s*(type)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*(=)\\s*(.+?)\\s*$",
           "captures": {
-            "1": { "name": "variable.other.member.kukicha" },
-            "2": { "name": "storage.type.kukicha" },
-            "3": { "name": "keyword.control.as.kukicha" },
-            "4": { "name": "string.quoted.double.kukicha" }
+            "1": { "name": "keyword.control.type.kukicha" },
+            "2": { "name": "entity.name.type.kukicha" },
+            "3": { "name": "keyword.operator.assignment.kukicha" },
+            "4": { "name": "storage.type.kukicha" }
           }
+        },
+        {
+          "match": "^\\s*(type)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s+((?:list|map|channel|reference)\\s+(?:of|to)\\s+[a-zA-Z_][a-zA-Z0-9_\\s]*|[a-zA-Z_][a-zA-Z0-9_.]*)\\s*$",
+          "captures": {
+            "1": { "name": "keyword.control.type.kukicha" },
+            "2": { "name": "entity.name.type.kukicha" },
+            "3": { "name": "storage.type.kukicha" }
+          }
+        },
+        {
+          "begin": "^\\s*(type)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*$",
+          "beginCaptures": {
+            "1": { "name": "keyword.control.type.kukicha" },
+            "2": { "name": "entity.name.type.kukicha" }
+          },
+          "end": "^(?![ \\t])|^(?=\\s*\\})",
+          "patterns": [
+            {
+              "match": "^\\s*([a-zA-Z_][a-zA-Z0-9_]*)\\s+([a-zA-Z_][a-zA-Z0-9_\\s]+?)(?:\\s+(as)\\s+\"([^\"]+)\"?)?\\s*$",
+              "captures": {
+                "1": { "name": "variable.other.member.kukicha" },
+                "2": { "name": "storage.type.kukicha" },
+                "3": { "name": "keyword.control.as.kukicha" },
+                "4": { "name": "string.quoted.double.kukicha" }
+              }
+            }
+          ]
         }
+      ]
+    },
+    "enum": {
+      "begin": "^\\s*(enum)\\s+([a-zA-Z_][a-zA-Z0-9_]*)(?:\\s*(:)\\s*([a-zA-Z_][a-zA-Z0-9_]*))?\\s*$",
+      "beginCaptures": {
+        "1": { "name": "keyword.control.enum.kukicha" },
+        "2": { "name": "entity.name.type.enum.kukicha" },
+        "3": { "name": "punctuation.separator.kukicha" },
+        "4": { "name": "storage.type.primitive.kukicha" }
+      },
+      "end": "^(?![ \\t])",
+      "patterns": [
+        {
+          "match": "^\\s*([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?:(=)\\s*(.+))?\\s*$",
+          "captures": {
+            "1": { "name": "variable.other.enummember.kukicha" },
+            "2": { "name": "keyword.operator.assignment.kukicha" },
+            "3": { "name": "meta.expression.kukicha" }
+          }
+        },
+        { "include": "#expressions" }
       ]
     },
     "interface": {
@@ -448,8 +491,19 @@
     "operators": {
       "patterns": [
         {
-          "match": "\\b(and|or|not|equals|is|isnt)\\b",
+          "match": "\\b(not)\\s+(in)\\b",
+          "captures": {
+            "1": { "name": "keyword.operator.word.kukicha" },
+            "2": { "name": "keyword.operator.word.kukicha" }
+          }
+        },
+        {
+          "match": "\\b(and|or|not|equals|is|isnt|in|then)\\b",
           "name": "keyword.operator.word.kukicha"
+        },
+        {
+          "match": "\\.\\.\\.",
+          "name": "keyword.operator.spread.kukicha"
         },
         {
           "match": "(==|!=|<=|>=|<|>)",
