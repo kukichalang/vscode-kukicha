@@ -2,13 +2,23 @@
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "Kukicha",
   "scopeName": "source.kukicha",
-  "fileTypes": ["kuki"],
+  "fileTypes": [
+    "kuki"
+  ],
   "firstLineMatch": "^#!.*\\bkukicha\\b",
   "patterns": [
-    { "include": "#comments" },
-    { "include": "#declarations" },
-    { "include": "#statements" },
-    { "include": "#expressions" }
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#declarations"
+    },
+    {
+      "include": "#statements"
+    },
+    {
+      "include": "#expressions"
+    }
   ],
   "repository": {
     "comments": {
@@ -21,60 +31,116 @@
     },
     "declarations": {
       "patterns": [
-        { "include": "#petiole" },
-        { "include": "#import" },
-        { "include": "#function" },
-        { "include": "#method" },
-        { "include": "#type" },
-        { "include": "#interface" },
-        { "include": "#enum" },
-        { "include": "#var" },
-        { "include": "#const" },
-        { "include": "#skill" }
+        {
+          "include": "#petiole"
+        },
+        {
+          "include": "#import"
+        },
+        {
+          "include": "#function"
+        },
+        {
+          "include": "#method"
+        },
+        {
+          "include": "#type"
+        },
+        {
+          "include": "#interface"
+        },
+        {
+          "include": "#enum"
+        },
+        {
+          "include": "#var"
+        },
+        {
+          "include": "#const"
+        },
+        {
+          "include": "#skill"
+        }
       ]
     },
     "petiole": {
       "match": "^\\s*(petiole)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
       "captures": {
-        "1": { "name": "keyword.control.kukicha" },
-        "2": { "name": "entity.name.package.kukicha" }
+        "1": {
+          "name": "keyword.control.kukicha"
+        },
+        "2": {
+          "name": "entity.name.package.kukicha"
+        }
       }
     },
     "import": {
       "match": "^\\s*(import)\\s+\"([^\"]+)\"(?:\\s+(as)\\s+([a-zA-Z_][a-zA-Z0-9_]*))?",
       "captures": {
-        "1": { "name": "keyword.control.import.kukicha" },
-        "2": { "name": "string.quoted.double.kukicha" },
-        "3": { "name": "keyword.control.import.kukicha" },
-        "4": { "name": "variable.other.alias.kukicha" }
+        "1": {
+          "name": "keyword.control.import.kukicha"
+        },
+        "2": {
+          "name": "string.quoted.double.kukicha"
+        },
+        "3": {
+          "name": "keyword.control.import.kukicha"
+        },
+        "4": {
+          "name": "variable.other.alias.kukicha"
+        }
       }
     },
     "function": {
       "begin": "^\\s*(func|function)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*(\\()",
       "beginCaptures": {
-        "1": { "name": "keyword.control.function.kukicha" },
-        "2": { "name": "entity.name.function.kukicha" },
-        "3": { "name": "punctuation.definition.parameters.begin.kukicha" }
+        "1": {
+          "name": "keyword.control.function.kukicha"
+        },
+        "2": {
+          "name": "entity.name.function.kukicha"
+        },
+        "3": {
+          "name": "punctuation.definition.parameters.begin.kukicha"
+        }
       },
       "end": "^(?![ \\t])",
       "patterns": [
-        { "include": "#parameters" },
-        { "include": "#types" },
-        { "include": "#comments" }
+        {
+          "include": "#parameters"
+        },
+        {
+          "include": "#types"
+        },
+        {
+          "include": "#comments"
+        }
       ]
     },
     "method": {
       "begin": "^\\s*(func|function)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s+(on)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
       "beginCaptures": {
-        "1": { "name": "keyword.control.function.kukicha" },
-        "2": { "name": "entity.name.function.method.kukicha" },
-        "3": { "name": "keyword.control.on.kukicha" },
-        "4": { "name": "variable.parameter.receiver.kukicha" }
+        "1": {
+          "name": "keyword.control.function.kukicha"
+        },
+        "2": {
+          "name": "entity.name.function.method.kukicha"
+        },
+        "3": {
+          "name": "keyword.control.on.kukicha"
+        },
+        "4": {
+          "name": "variable.parameter.receiver.kukicha"
+        }
       },
       "end": "^(?![ \\t])",
       "patterns": [
-        { "include": "#types" },
-        { "include": "#comments" }
+        {
+          "include": "#types"
+        },
+        {
+          "include": "#comments"
+        }
       ]
     },
     "type": {
@@ -82,35 +148,61 @@
         {
           "match": "^\\s*(type)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*(=)\\s*(.+?)\\s*$",
           "captures": {
-            "1": { "name": "keyword.control.type.kukicha" },
-            "2": { "name": "entity.name.type.kukicha" },
-            "3": { "name": "keyword.operator.assignment.kukicha" },
-            "4": { "name": "storage.type.kukicha" }
+            "1": {
+              "name": "keyword.control.type.kukicha"
+            },
+            "2": {
+              "name": "entity.name.type.kukicha"
+            },
+            "3": {
+              "name": "keyword.operator.assignment.kukicha"
+            },
+            "4": {
+              "name": "storage.type.kukicha"
+            }
           }
         },
         {
           "match": "^\\s*(type)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s+((?:list|map|channel|reference)\\s+(?:of|to)\\s+[a-zA-Z_][a-zA-Z0-9_\\s]*|[a-zA-Z_][a-zA-Z0-9_.]*)\\s*$",
           "captures": {
-            "1": { "name": "keyword.control.type.kukicha" },
-            "2": { "name": "entity.name.type.kukicha" },
-            "3": { "name": "storage.type.kukicha" }
+            "1": {
+              "name": "keyword.control.type.kukicha"
+            },
+            "2": {
+              "name": "entity.name.type.kukicha"
+            },
+            "3": {
+              "name": "storage.type.kukicha"
+            }
           }
         },
         {
           "begin": "^\\s*(type)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*$",
           "beginCaptures": {
-            "1": { "name": "keyword.control.type.kukicha" },
-            "2": { "name": "entity.name.type.kukicha" }
+            "1": {
+              "name": "keyword.control.type.kukicha"
+            },
+            "2": {
+              "name": "entity.name.type.kukicha"
+            }
           },
           "end": "^(?![ \\t])|^(?=\\s*\\})",
           "patterns": [
             {
               "match": "^\\s*([a-zA-Z_][a-zA-Z0-9_]*)\\s+([a-zA-Z_][a-zA-Z0-9_\\s]+?)(?:\\s+(as)\\s+\"([^\"]+)\"?)?\\s*$",
               "captures": {
-                "1": { "name": "variable.other.member.kukicha" },
-                "2": { "name": "storage.type.kukicha" },
-                "3": { "name": "keyword.control.as.kukicha" },
-                "4": { "name": "string.quoted.double.kukicha" }
+                "1": {
+                  "name": "variable.other.member.kukicha"
+                },
+                "2": {
+                  "name": "storage.type.kukicha"
+                },
+                "3": {
+                  "name": "keyword.control.as.kukicha"
+                },
+                "4": {
+                  "name": "string.quoted.double.kukicha"
+                }
               }
             }
           ]
@@ -118,95 +210,185 @@
       ]
     },
     "enum": {
-      "begin": "^\\s*(enum)\\s+([a-zA-Z_][a-zA-Z0-9_]*)(?:\\s*(:)\\s*([a-zA-Z_][a-zA-Z0-9_]*))?\\s*$",
+      "begin": "^\\s*(enum|enumeration)\\s+([a-zA-Z_][a-zA-Z0-9_]*)(?:\\s*(:)\\s*([a-zA-Z_][a-zA-Z0-9_]*))?(?:\\s+(of)\\s+([a-zA-Z_][a-zA-Z0-9_]*)(?:\\s+(and)\\s+([a-zA-Z_][a-zA-Z0-9_]*))*)?\\s*$",
       "beginCaptures": {
-        "1": { "name": "keyword.control.enum.kukicha" },
-        "2": { "name": "entity.name.type.enum.kukicha" },
-        "3": { "name": "punctuation.separator.kukicha" },
-        "4": { "name": "storage.type.primitive.kukicha" }
+        "1": {
+          "name": "keyword.control.enum.kukicha"
+        },
+        "2": {
+          "name": "entity.name.type.enum.kukicha"
+        },
+        "3": {
+          "name": "punctuation.separator.kukicha"
+        },
+        "4": {
+          "name": "storage.type.primitive.kukicha"
+        },
+        "5": {
+          "name": "keyword.control.of.kukicha"
+        },
+        "6": {
+          "name": "entity.name.type.parameter.kukicha"
+        },
+        "7": {
+          "name": "keyword.operator.and.kukicha"
+        },
+        "8": {
+          "name": "entity.name.type.parameter.kukicha"
+        }
       },
       "end": "^(?![ \\t])",
       "patterns": [
         {
           "match": "^\\s*([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?:(=)\\s*(.+))?\\s*$",
           "captures": {
-            "1": { "name": "variable.other.enummember.kukicha" },
-            "2": { "name": "keyword.operator.assignment.kukicha" },
-            "3": { "name": "meta.expression.kukicha" }
+            "1": {
+              "name": "variable.other.enummember.kukicha"
+            },
+            "2": {
+              "name": "keyword.operator.assignment.kukicha"
+            },
+            "3": {
+              "name": "meta.expression.kukicha"
+            }
           }
         },
-        { "include": "#expressions" }
+        {
+          "include": "#expressions"
+        }
       ]
     },
     "interface": {
       "begin": "^\\s*(interface)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*$",
       "beginCaptures": {
-        "1": { "name": "keyword.control.interface.kukicha" },
-        "2": { "name": "entity.name.type.interface.kukicha" }
+        "1": {
+          "name": "keyword.control.interface.kukicha"
+        },
+        "2": {
+          "name": "entity.name.type.interface.kukicha"
+        }
       },
       "end": "^(?![ \\t])",
       "patterns": [
-        { "include": "#method-signature" },
-        { "include": "#comments" }
+        {
+          "include": "#method-signature"
+        },
+        {
+          "include": "#comments"
+        }
       ]
     },
     "method-signature": {
       "match": "^\\s*([a-zA-Z_][a-zA-Z0-9_]*)\\s*(\\([^)]*\\))",
       "captures": {
-        "1": { "name": "entity.name.function.method.kukicha" },
-        "2": { "name": "meta.parameters.kukicha" }
+        "1": {
+          "name": "entity.name.function.method.kukicha"
+        },
+        "2": {
+          "name": "meta.parameters.kukicha"
+        }
       }
     },
     "var": {
       "match": "^\\s*(var|variable)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s+(?:((?:list|map|channel|reference)\\s+(?:of|to)\\s+(?:[a-zA-Z_][a-zA-Z0-9_\\s]+))|([a-zA-Z_][a-zA-Z0-9_]*))\\s*(?:(=|:=)\\s*(.+))?$",
       "captures": {
-        "1": { "name": "keyword.control.var.kukicha" },
-        "2": { "name": "variable.other.readwrite.kukicha" },
-        "3": { "name": "storage.type.generic.kukicha" },
-        "4": { "name": "storage.type.kukicha" },
-        "5": { "name": "keyword.operator.assignment.kukicha" },
-        "6": { "name": "meta.assignment.rhs.kukicha" }
+        "1": {
+          "name": "keyword.control.var.kukicha"
+        },
+        "2": {
+          "name": "variable.other.readwrite.kukicha"
+        },
+        "3": {
+          "name": "storage.type.generic.kukicha"
+        },
+        "4": {
+          "name": "storage.type.kukicha"
+        },
+        "5": {
+          "name": "keyword.operator.assignment.kukicha"
+        },
+        "6": {
+          "name": "meta.assignment.rhs.kukicha"
+        }
       }
     },
     "const": {
       "match": "^\\s*(const|constant)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
       "captures": {
-        "1": { "name": "keyword.control.const.kukicha" },
-        "2": { "name": "entity.name.constant.kukicha" }
+        "1": {
+          "name": "keyword.control.const.kukicha"
+        },
+        "2": {
+          "name": "entity.name.constant.kukicha"
+        }
       }
     },
     "skill": {
       "match": "^\\s*(skill)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
       "captures": {
-        "1": { "name": "keyword.control.skill.kukicha" },
-        "2": { "name": "entity.name.type.skill.kukicha" }
+        "1": {
+          "name": "keyword.control.skill.kukicha"
+        },
+        "2": {
+          "name": "entity.name.type.skill.kukicha"
+        }
       }
     },
     "statements": {
       "patterns": [
-        { "include": "#if" },
-        { "include": "#for" },
-        { "include": "#switch" },
-        { "include": "#select" },
-        { "include": "#return" },
-        { "include": "#defer" },
-        { "include": "#go" },
-        { "include": "#send" },
-        { "include": "#short-var" },
-        { "include": "#assignment" },
-        { "include": "#onerr" },
-        { "include": "#fallback" }
+        {
+          "include": "#if"
+        },
+        {
+          "include": "#for"
+        },
+        {
+          "include": "#switch"
+        },
+        {
+          "include": "#select"
+        },
+        {
+          "include": "#return"
+        },
+        {
+          "include": "#defer"
+        },
+        {
+          "include": "#go"
+        },
+        {
+          "include": "#send"
+        },
+        {
+          "include": "#short-var"
+        },
+        {
+          "include": "#assignment"
+        },
+        {
+          "include": "#onerr"
+        },
+        {
+          "include": "#fallback"
+        }
       ]
     },
     "if": {
       "begin": "^\\s*(if)\\s+(.+?)\\s*$",
       "beginCaptures": {
-        "1": { "name": "keyword.control.if.kukicha" },
-        "2": { "name": "meta.condition.kukicha" }
+        "1": {
+          "name": "keyword.control.if.kukicha"
+        },
+        "2": {
+          "name": "meta.condition.kukicha"
+        }
       },
       "end": "^(?![ \\t])",
       "patterns": [
-        { "include": "#block" }
+        {
+          "include": "#block"
+        }
       ]
     },
     "for": {
@@ -214,29 +396,53 @@
         {
           "begin": "^\\s*(for)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s+(in)\\s+(.+)\\s*$",
           "beginCaptures": {
-            "1": { "name": "keyword.control.for.kukicha" },
-            "2": { "name": "variable.other.loop.kukicha" },
-            "3": { "name": "keyword.control.in.kukicha" },
-            "4": { "name": "meta.iterable.kukicha" }
+            "1": {
+              "name": "keyword.control.for.kukicha"
+            },
+            "2": {
+              "name": "variable.other.loop.kukicha"
+            },
+            "3": {
+              "name": "keyword.control.in.kukicha"
+            },
+            "4": {
+              "name": "meta.iterable.kukicha"
+            }
           },
           "end": "^(?![ \\t])",
           "patterns": [
-            { "include": "#block" }
+            {
+              "include": "#block"
+            }
           ]
         },
         {
           "begin": "^\\s*(for)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s+(from)\\s+(.+)\\s+(to|through)\\s+(.+)\\s*$",
           "beginCaptures": {
-            "1": { "name": "keyword.control.for.kukicha" },
-            "2": { "name": "variable.other.loop.kukicha" },
-            "3": { "name": "keyword.control.from.kukicha" },
-            "4": { "name": "meta.expression.kukicha" },
-            "5": { "name": "keyword.control.to.kukicha" },
-            "6": { "name": "meta.expression.kukicha" }
+            "1": {
+              "name": "keyword.control.for.kukicha"
+            },
+            "2": {
+              "name": "variable.other.loop.kukicha"
+            },
+            "3": {
+              "name": "keyword.control.from.kukicha"
+            },
+            "4": {
+              "name": "meta.expression.kukicha"
+            },
+            "5": {
+              "name": "keyword.control.to.kukicha"
+            },
+            "6": {
+              "name": "meta.expression.kukicha"
+            }
           },
           "end": "^(?![ \\t])",
           "patterns": [
-            { "include": "#block" }
+            {
+              "include": "#block"
+            }
           ]
         }
       ]
@@ -244,19 +450,27 @@
     "switch": {
       "begin": "^\\s*(switch)(?:\\s+(.+?))?\\s*$",
       "beginCaptures": {
-        "1": { "name": "keyword.control.switch.kukicha" },
-        "2": { "name": "meta.expression.kukicha" }
+        "1": {
+          "name": "keyword.control.switch.kukicha"
+        },
+        "2": {
+          "name": "meta.expression.kukicha"
+        }
       },
       "end": "^(?![ \\t])",
       "patterns": [
         {
           "begin": "^\\s*(when|default)\\b",
           "beginCaptures": {
-            "1": { "name": "keyword.control.case.kukicha" }
+            "1": {
+              "name": "keyword.control.case.kukicha"
+            }
           },
           "end": "(?=^\\s*(when|default)\\b)|^(?![ \\t])",
           "patterns": [
-            { "include": "#block" }
+            {
+              "include": "#block"
+            }
           ]
         }
       ]
@@ -264,18 +478,24 @@
     "select": {
       "begin": "^\\s*(select)\\s*$",
       "beginCaptures": {
-        "1": { "name": "keyword.control.select.kukicha" }
+        "1": {
+          "name": "keyword.control.select.kukicha"
+        }
       },
       "end": "^(?![ \\t])",
       "patterns": [
         {
           "begin": "^\\s*(when|default)\\b",
           "beginCaptures": {
-            "1": { "name": "keyword.control.case.kukicha" }
+            "1": {
+              "name": "keyword.control.case.kukicha"
+            }
           },
           "end": "(?=^\\s*(when|default)\\b)|^(?![ \\t])",
           "patterns": [
-            { "include": "#block" }
+            {
+              "include": "#block"
+            }
           ]
         }
       ]
@@ -283,53 +503,85 @@
     "return": {
       "match": "^\\s*(return)(?:\\s+(.+?))?\\s*$",
       "captures": {
-        "1": { "name": "keyword.control.return.kukicha" },
-        "2": { "name": "meta.expression.kukicha" }
+        "1": {
+          "name": "keyword.control.return.kukicha"
+        },
+        "2": {
+          "name": "meta.expression.kukicha"
+        }
       }
     },
     "defer": {
       "begin": "^\\s*(defer)\\s+",
       "beginCaptures": {
-        "1": { "name": "keyword.control.defer.kukicha" }
+        "1": {
+          "name": "keyword.control.defer.kukicha"
+        }
       },
       "end": "$",
       "patterns": [
-        { "include": "#expressions" }
+        {
+          "include": "#expressions"
+        }
       ]
     },
     "go": {
       "begin": "^\\s*(go)\\s*",
       "beginCaptures": {
-        "1": { "name": "keyword.control.go.kukicha" }
+        "1": {
+          "name": "keyword.control.go.kukicha"
+        }
       },
       "end": "$",
       "patterns": [
-        { "include": "#expressions" },
-        { "include": "#block" }
+        {
+          "include": "#expressions"
+        },
+        {
+          "include": "#block"
+        }
       ]
     },
     "send": {
       "match": "^\\s*(send)\\s+(.+)\\s+(to)\\s+(.+)\\s*$",
       "captures": {
-        "1": { "name": "keyword.control.send.kukicha" },
-        "2": { "name": "meta.expression.kukicha" },
-        "3": { "name": "keyword.control.to.kukicha" },
-        "4": { "name": "meta.expression.kukicha" }
+        "1": {
+          "name": "keyword.control.send.kukicha"
+        },
+        "2": {
+          "name": "meta.expression.kukicha"
+        },
+        "3": {
+          "name": "keyword.control.to.kukicha"
+        },
+        "4": {
+          "name": "meta.expression.kukicha"
+        }
       }
     },
     "short-var": {
       "match": "^\\s*([a-zA-Z_][a-zA-Z0-9_\\s,]*)\\s*(:=)\\s*(.+?)\\s*(?:onerr\\s+(.+?))?$",
       "captures": {
-        "1": { "name": "variable.other.readwrite.kukicha" },
-        "2": { "name": "keyword.operator.assignment.short.kukicha" },
-        "3": { "name": "meta.expression.rhs.kukicha" },
-        "4": { "name": "meta.onerr.kukicha" }
+        "1": {
+          "name": "variable.other.readwrite.kukicha"
+        },
+        "2": {
+          "name": "keyword.operator.assignment.short.kukicha"
+        },
+        "3": {
+          "name": "meta.expression.rhs.kukicha"
+        },
+        "4": {
+          "name": "meta.onerr.kukicha"
+        }
       }
     },
     "assignment": {
       "match": "^[^=].*?(?<![!><:=])=(?!=)\\s*(.+)$",
       "captures": {
-        "1": { "name": "meta.expression.rhs.kukicha" }
+        "1": {
+          "name": "meta.expression.rhs.kukicha"
+        }
       }
     },
     "onerr": {
@@ -337,22 +589,34 @@
         {
           "match": "\\b(onerr)\\s+(as)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
           "captures": {
-            "1": { "name": "keyword.control.onerr.kukicha" },
-            "2": { "name": "keyword.control.as.kukicha" },
-            "3": { "name": "variable.other.onerr-alias.kukicha" }
+            "1": {
+              "name": "keyword.control.onerr.kukicha"
+            },
+            "2": {
+              "name": "keyword.control.as.kukicha"
+            },
+            "3": {
+              "name": "variable.other.onerr-alias.kukicha"
+            }
           }
         },
         {
           "match": "\\b(onerr)\\s+(panic|return|discard|explain|[0-9]+|\\S+)",
           "captures": {
-            "1": { "name": "keyword.control.onerr.kukicha" },
-            "2": { "name": "keyword.control.handler.kukicha" }
+            "1": {
+              "name": "keyword.control.onerr.kukicha"
+            },
+            "2": {
+              "name": "keyword.control.handler.kukicha"
+            }
           }
         },
         {
           "match": "\\b(onerr)\\s*$",
           "captures": {
-            "1": { "name": "keyword.control.onerr.kukicha" }
+            "1": {
+              "name": "keyword.control.onerr.kukicha"
+            }
           }
         }
       ]
@@ -363,22 +627,46 @@
     },
     "block": {
       "patterns": [
-        { "include": "#statements" },
-        { "include": "#expressions" }
+        {
+          "include": "#statements"
+        },
+        {
+          "include": "#expressions"
+        }
       ]
     },
     "expressions": {
       "patterns": [
-        { "include": "#keywords" },
-        { "include": "#pipe" },
-        { "include": "#explicit-type-arg" },
-        { "include": "#arrow-lambda" },
-        { "include": "#literals" },
-        { "include": "#operators" },
-        { "include": "#function-call" },
-        { "include": "#identifiers" },
-        { "include": "#types" },
-        { "include": "#collections" }
+        {
+          "include": "#keywords"
+        },
+        {
+          "include": "#pipe"
+        },
+        {
+          "include": "#explicit-type-arg"
+        },
+        {
+          "include": "#arrow-lambda"
+        },
+        {
+          "include": "#literals"
+        },
+        {
+          "include": "#operators"
+        },
+        {
+          "include": "#function-call"
+        },
+        {
+          "include": "#identifiers"
+        },
+        {
+          "include": "#types"
+        },
+        {
+          "include": "#collections"
+        }
       ]
     },
     "pipe": {
@@ -388,19 +676,31 @@
     "arrow-lambda": {
       "begin": "(=>)",
       "beginCaptures": {
-        "1": { "name": "storage.type.function.arrow.kukicha" }
+        "1": {
+          "name": "storage.type.function.arrow.kukicha"
+        }
       },
       "end": "(?=[,);\\]\\}\\n])",
       "patterns": [
-        { "include": "#expressions" }
+        {
+          "include": "#expressions"
+        }
       ]
     },
     "literals": {
       "patterns": [
-        { "include": "#strings" },
-        { "include": "#numbers" },
-        { "include": "#booleans" },
-        { "include": "#special-literals" }
+        {
+          "include": "#strings"
+        },
+        {
+          "include": "#numbers"
+        },
+        {
+          "include": "#booleans"
+        },
+        {
+          "include": "#special-literals"
+        }
       ]
     },
     "strings": {
@@ -419,7 +719,9 @@
               "end": "\\}",
               "name": "meta.interpolation.kukicha",
               "patterns": [
-                { "include": "#expressions" }
+                {
+                  "include": "#expressions"
+                }
               ]
             }
           ]
@@ -438,7 +740,9 @@
               "end": "\\}",
               "name": "meta.interpolation.kukicha",
               "patterns": [
-                { "include": "#expressions" }
+                {
+                  "include": "#expressions"
+                }
               ]
             }
           ]
@@ -462,7 +766,9 @@
               "end": "\\}",
               "name": "meta.interpolation.kukicha",
               "patterns": [
-                { "include": "#expressions" }
+                {
+                  "include": "#expressions"
+                }
               ]
             }
           ]
@@ -494,8 +800,12 @@
         {
           "match": "\\b(not)\\s+(in)\\b",
           "captures": {
-            "1": { "name": "keyword.operator.word.kukicha" },
-            "2": { "name": "keyword.operator.word.kukicha" }
+            "1": {
+              "name": "keyword.operator.word.kukicha"
+            },
+            "2": {
+              "name": "keyword.operator.word.kukicha"
+            }
           }
         },
         {
@@ -541,15 +851,23 @@
         {
           "begin": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(\\()",
           "beginCaptures": {
-            "1": { "name": "entity.name.function.call.kukicha" },
-            "2": { "name": "punctuation.definition.arguments.begin.kukicha" }
+            "1": {
+              "name": "entity.name.function.call.kukicha"
+            },
+            "2": {
+              "name": "punctuation.definition.arguments.begin.kukicha"
+            }
           },
           "end": "\\)",
           "endCaptures": {
-            "0": { "name": "punctuation.definition.arguments.end.kukicha" }
+            "0": {
+              "name": "punctuation.definition.arguments.end.kukicha"
+            }
           },
           "patterns": [
-            { "include": "#expressions" }
+            {
+              "include": "#expressions"
+            }
           ]
         }
       ]
@@ -575,27 +893,39 @@
         {
           "begin": "\\b(?:list\\s+of\\s+[a-zA-Z_][a-zA-Z0-9_]*)?\\s*\\{",
           "beginCaptures": {
-            "0": { "name": "punctuation.definition.list.begin.kukicha" }
+            "0": {
+              "name": "punctuation.definition.list.begin.kukicha"
+            }
           },
           "end": "\\}",
           "endCaptures": {
-            "0": { "name": "punctuation.definition.list.end.kukicha" }
+            "0": {
+              "name": "punctuation.definition.list.end.kukicha"
+            }
           },
           "patterns": [
-            { "include": "#expressions" }
+            {
+              "include": "#expressions"
+            }
           ]
         },
         {
           "begin": "\\b(?:map\\s+of\\s+[a-zA-Z_][a-zA-Z0-9_]*\\s+to\\s+[a-zA-Z_][a-zA-Z0-9_]*)?\\s*\\{",
           "beginCaptures": {
-            "0": { "name": "punctuation.definition.map.begin.kukicha" }
+            "0": {
+              "name": "punctuation.definition.map.begin.kukicha"
+            }
           },
           "end": "\\}",
           "endCaptures": {
-            "0": { "name": "punctuation.definition.map.end.kukicha" }
+            "0": {
+              "name": "punctuation.definition.map.end.kukicha"
+            }
           },
           "patterns": [
-            { "include": "#expressions" }
+            {
+              "include": "#expressions"
+            }
           ]
         }
       ]
@@ -605,8 +935,12 @@
         {
           "match": "\\b(also)\\s+(as)\\b",
           "captures": {
-            "1": { "name": "keyword.control.tee.kukicha" },
-            "2": { "name": "keyword.control.as.kukicha" }
+            "1": {
+              "name": "keyword.control.tee.kukicha"
+            },
+            "2": {
+              "name": "keyword.control.as.kukicha"
+            }
           }
         },
         {
@@ -620,8 +954,12 @@
         {
           "match": "\\b(receive)\\s+(from)\\b",
           "captures": {
-            "1": { "name": "keyword.control.receive.kukicha" },
-            "2": { "name": "keyword.control.from.kukicha" }
+            "1": {
+              "name": "keyword.control.receive.kukicha"
+            },
+            "2": {
+              "name": "keyword.control.from.kukicha"
+            }
           }
         },
         {
@@ -637,10 +975,18 @@
     "explicit-type-arg": {
       "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*(?:\\.[a-zA-Z_][a-zA-Z0-9_]*)?)\\s+(of)\\s+([a-zA-Z_][a-zA-Z0-9_.]*)(?:\\s+(from)\\b)?",
       "captures": {
-        "1": { "name": "entity.name.function.call.kukicha" },
-        "2": { "name": "keyword.control.kukicha" },
-        "3": { "name": "storage.type.kukicha" },
-        "4": { "name": "keyword.control.kukicha" }
+        "1": {
+          "name": "entity.name.function.call.kukicha"
+        },
+        "2": {
+          "name": "keyword.control.kukicha"
+        },
+        "3": {
+          "name": "storage.type.kukicha"
+        },
+        "4": {
+          "name": "keyword.control.kukicha"
+        }
       }
     },
     "parameters": {
@@ -648,15 +994,23 @@
         {
           "begin": "\\(",
           "beginCaptures": {
-            "0": { "name": "punctuation.definition.parameters.begin.kukicha" }
+            "0": {
+              "name": "punctuation.definition.parameters.begin.kukicha"
+            }
           },
           "end": "\\)",
           "endCaptures": {
-            "0": { "name": "punctuation.definition.parameters.end.kukicha" }
+            "0": {
+              "name": "punctuation.definition.parameters.end.kukicha"
+            }
           },
           "patterns": [
-            { "include": "#types" },
-            { "include": "#identifiers" }
+            {
+              "include": "#types"
+            },
+            {
+              "include": "#identifiers"
+            }
           ]
         }
       ]
