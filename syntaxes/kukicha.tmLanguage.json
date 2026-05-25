@@ -361,6 +361,9 @@
           "include": "#send"
         },
         {
+          "include": "#delete"
+        },
+        {
           "include": "#short-var"
         },
         {
@@ -541,6 +544,17 @@
           "include": "#block"
         }
       ]
+    },
+    "delete": {
+      "match": "^\\s*(delete)\\s+(.+)\\s*$",
+      "captures": {
+        "1": {
+          "name": "keyword.control.delete.kukicha"
+        },
+        "2": {
+          "name": "meta.expression.kukicha"
+        }
+      }
     },
     "send": {
       "match": "^\\s*(send)\\s+(.+)\\s+(to)\\s+(.+)\\s*$",
@@ -881,6 +895,10 @@
         {
           "match": "\\b(int|int8|int16|int32|int64|uint|uint8|uint16|uint32|uint64|float32|float64|string|bool|byte|rune|any|error)\\b",
           "name": "storage.type.primitive.kukicha"
+        },
+        {
+          "match": "\\b(nullable)\\b",
+          "name": "storage.type.modifier.kukicha"
         },
         {
           "match": "\\b(list|map|channel|reference)\\s+(of|to)\\b",

@@ -2,8 +2,8 @@
   "name": "kukicha-lang",
   "displayName": "Kukicha Language Support",
   "description": "Full language support for Kukicha - a beginner-friendly language that compiles to Go",
-  "version": "0.13.1",
-  "kukichaVersion": "0.13.1",
+  "version": "0.21.0",
+  "kukichaVersion": "0.21.2",
   "publisher": "kukicha",
   "engines": {
     "vscode": "^1.90.0"
